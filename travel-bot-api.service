@@ -1,0 +1,20 @@
+[Unit]
+Description=SMM Travel Bot API Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/smm-travel-bot
+Environment="PATH=/root/smm-travel-bot/venv/bin"
+ExecStart=/root/smm-travel-bot/venv/bin/python /root/smm-travel-bot/api_server.py
+Restart=always
+RestartSec=10
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=travel-bot-api
+
+[Install]
+WantedBy=multi-user.target
+
